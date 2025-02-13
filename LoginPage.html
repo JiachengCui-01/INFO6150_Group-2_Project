@@ -3,46 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login & Home Page</title>
+    <title>Login Page</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        function validateForm() {
-            let emailField = document.getElementById("email");
-            let passwordField = document.getElementById("password");
-            let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-            if (!emailPattern.test(emailField.value)) {
-                emailField.setCustomValidity("Please enter a valid email address, e.g., example@mail.com");
-            } else {
-                emailField.setCustomValidity("");
-            }
-
-            if (passwordField.value.length < 6) {
-                passwordField.setCustomValidity("Password must be at least 6 characters long.");
-            } else {
-                passwordField.setCustomValidity("");
-            }
-            
-            return emailField.reportValidity() && passwordField.reportValidity();
-        }
-
         document.addEventListener("DOMContentLoaded", function () {
             let emailField = document.getElementById("email");
+            let emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
             emailField.addEventListener("input", function () {
-                if (!emailField.validity.valid) {
-                    emailField.setCustomValidity("Please enter a valid email address, e.g., example@mail.com");
+                if (!emailPattern.test(emailField.value)) {
+                    emailField.setCustomValidity("Please enter a valid email address, e.g., example@gmail.com");
                 } else {
-                    emailField.setCustomValidity("");
+                    emailField.setCustomValidity(""); 
                 }
             });
-
             let passwordField = document.getElementById("password");
             passwordField.addEventListener("input", function () {
                 if (passwordField.value.length < 6) {
                     passwordField.setCustomValidity("Password must be at least 6 characters long.");
                 } else {
-                    passwordField.setCustomValidity("");
+                    passwordField.setCustomValidity(""); 
                 }
             });
         });
@@ -56,12 +36,24 @@
             justify-content: center;
             align-items: center;
         }
+        .navbar {
+            background: rgb(0, 0, 0, 0);
+            padding: 15px 5px;
+        }
+        .navbar-brand {
+            font-family: initial; 
+            font-weight: bold; 
+            font-size: 28px; 
+            color: white; 
+        }
+        .navbar-nav .nav-link {
+            color: white;
+        }
         .login-card {
-            width: 380px;
+            width: 450px;
             padding: 30px;
             border-radius: 15px;
             background: rgba(255, 255, 255, 0.8);
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
         }
         .login-card img {
             width: 80px;
@@ -76,11 +68,22 @@
             background: #000000;
             color: white;
         }
+        @media (max-width: 767px) {
+            .login-card {
+                width: 90%;
+                margin-top: 130px;
+                padding: 20px;
+            }
+            .navbar-collapse {
+                background: rgba(0, 0, 0, 0.8);
+                padding: 10px;
+            }
+        }
     </style>
 </head>
 <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
         <div class="container-fluid">
           <a class="navbar-brand" href="#">G2 Medical Center</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -89,7 +92,7 @@
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                <a class="nav-link" aria-current="page" href="#">Home</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">Doctors</a>
@@ -103,7 +106,11 @@
                 </a>
                 <ul class="dropdown-menu">
                   <li><a class="dropdown-item" href="#">Department of internal medicine</a></li>
-                  <li><a class="dropdown-item" href="#">Department of orthopedics</a></li>
+                  <li><a class="dropdown-item" href="#">Department of surgery</a></li>
+                  <li><a class="dropdown-item" href="#">Department of pediatrics</a></li>
+                  <li><a class="dropdown-item" href="#">Department of ophtalmology</a></li>
+                  <li><a class="dropdown-item" href="#">Department of stomatology</a></li>
+                  <li><a class="dropdown-item" href="#">Department of dermatology</a></li>
                   <li><a class="dropdown-item" href="#">Department of neurosurgery</a></li>
                 </ul>
               </li>
