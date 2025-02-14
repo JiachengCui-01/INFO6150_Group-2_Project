@@ -31,13 +31,14 @@
         body {
             background: url('https://images.unsplash.com/photo-1576091160550-2173dba999ef') no-repeat center center fixed;
             background-size: cover;
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
         }
         .navbar {
             background: rgb(0, 0, 0, 0);
+            width: 100%;
             padding: 15px 5px;
         }
         .navbar-brand {
@@ -54,6 +55,7 @@
             padding: 30px;
             border-radius: 15px;
             background: rgba(255, 255, 255, 0.8);
+            margin-top: calc(60px + 2vh); /* Navbar height + additional spacing */
         }
         .login-card img {
             width: 80px;
