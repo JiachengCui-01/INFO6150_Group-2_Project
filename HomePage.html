@@ -55,8 +55,49 @@
             /* 让箭头更清晰 */
         }
 
-        .modal-body {
-    padding: 20px; 
+        .btn-info {
+        background-color: #17a2b8; /* Custom color */
+        border-color: #17a2b8;
+    }
+
+    .btn-info:hover {
+        background-color: #139ca3; /* Darker shade for hover */
+        border-color: #117a80;
+    }
+
+    /* Card Styling */
+    .card {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+        margin-top: 20px; /* Spacing between cards */
+        margin-bottom: 20px}
+
+        .card-img-top {
+        height: 200px; /* Fixed height for consistent display */
+        object-fit: cover; /* Cover fit to handle different aspect ratios */
+    }
+
+    .card-body {
+        padding: 15px;
+    }
+
+    /* Alert Styling */
+    .alert {
+        margin-top: 20px; 
+        margin-bottom: 20px; 
+    }
+
+    /* Modal Styling */
+    .modal-content {
+        border-radius: 8px; 
+    }
+
+    .modal-header {
+        background-color: #f8f9fa; 
+        border-bottom: 2px solid #dee2e6; 
+    }
+
+    .modal-title {
+        color: #343a40; 
     }
 
     </style>
@@ -277,7 +318,7 @@
         </div>
     </div>
 
-    <div class="card mt-3 mb-5" id="lab_results">
+    <div class="card mt-3a mb-5" id="lab_results">
         <div class="card-body">
           <h5 class="card-title">Lipid Profile</h5>
           <p class="card-text"><strong>Total Cholesterol:</strong> 200 mg/dL <span class="text-muted">(Desirable: < 200 mg/dL)</span></p>
