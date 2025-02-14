@@ -1,11 +1,11 @@
 # Group 2 Project - G2 Medical Center
 
 
-## Login Page
+## Login Page and Home Page
 ### **1. Purpose of the Website**
-The website is designed to provide a seamless and secure login experience for both patients and medical professionals. Users can easily sign in or sign up with their email address and password in this page. Also, the navbar on the top can direct them to some useful information about the Medical Center.
+The website is designed to provide a seamless connection between patients and medical professionals. It can enable patients to obtain more information about Medical Centers and receive assistance. Users can easily sign in or sign up with their email address and password in this page. Also, the navbar on the top can direct them to some useful information about the Medical Center.
 
-In the future, this page will serve as the entry point for users who wish to access various healthcare-related features such as:
+In the future, The Login page will serve as the entry point for users who wish to access various healthcare-related services on Home page. Such as:
 - Booking medical appointments
 - Accessing medical records
 - Consulting with doctors
