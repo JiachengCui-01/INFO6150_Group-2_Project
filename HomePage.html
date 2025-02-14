@@ -54,6 +54,11 @@
             opacity: 0.8;
             /* 让箭头更清晰 */
         }
+
+        .modal-body {
+    padding: 20px; 
+    }
+
     </style>
 </head>
 
@@ -146,6 +151,13 @@
         </div>
     </div>
 
+    <!-- added alert -->
+    <div class="alert alert-warning alert-dismissible fade show mt-3 mb-3" role="alert">
+        <strong>You have a red alert</strong> You should check in on some of those fields below.
+        <a href="#lab_results" class = "alert-link">Click here to view.</a>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+
 
 
     <!--  Doctors Section -->
@@ -193,10 +205,39 @@
         </div>
     </div>
 
-    <!-- "See More Doctors" 按钮 -->
-    <div class="text-center mt-4">
+     <!-- "See More Doctors" 按钮 -->
+     <div class="text-center mt-4">
         <a href="doctors.html" class="btn btn-outline-primary btn-lg">See More Doctors</a>
     </div>
+
+    <!-- Trigger Button --> 
+<button type="button" class="btn btn-info mt-3 mb-3" data-bs-toggle="modal" data-bs-target="#doctorMessageModal">
+    View Doctor's Message 
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="doctorMessageModal" tabindex="-1" aria-labelledby="modalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalScrollableTitle">Message from Your Doctor</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Dear [Patient Name],</p>
+          <p>After reviewing your recent test results, I recommend the following changes to your treatment plan. Please start taking the new medications as prescribed and continue monitoring your blood pressure twice a day.</p>
+          <p>If you experience any side effects, please contact our office immediately. We will also schedule a follow-up appointment in three weeks to assess your progress.</p>
+          <p>Best regards,</p>
+          <p>Dr. Wang</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
 
     <!-- ✅ 新增 Table（科室列表） -->
     <div class="container mt-5">
@@ -236,6 +277,20 @@
         </div>
     </div>
 
+    <div class="card mt-3 mb-5" id="lab_results">
+        <div class="card-body">
+          <h5 class="card-title">Lipid Profile</h5>
+          <p class="card-text"><strong>Total Cholesterol:</strong> 200 mg/dL <span class="text-muted">(Desirable: < 200 mg/dL)</span></p>
+          <p class="card-text"><strong>HDL (High-Density Lipoprotein):</strong> 50 mg/dL <span class="text-muted">(Good: 40 - 60 mg/dL)</span></p>
+          <p class="card-text"><strong>LDL (Low-Density Lipoprotein):</strong> 120 mg/dL <span class="text-muted">(Optimal: < 100 mg/dL)</span></p>
+          <p class="card-text"><strong>Triglycerides:</strong> 150 mg/dL <span class="text-muted">(Normal: < 150 mg/dL)</span></p>
+          <p class="card-text"><strong>VLDL (Very Low-Density Lipoprotein):</strong> 30 mg/dL <span class="text-muted">(Normal: 5-40 mg/dL)</span></p>
+          <p class="card-text"><strong>Non-HDL Cholesterol:</strong> 150 mg/dL <span class="text-muted">(Optimal: < 130 mg/dL)</span></p>
+          <!-- Additional results or notes -->
+        </div>
+      </div>
+      
+
     <!-- ✅ 新增 Accordion（FAQ） -->
     <div class="container mt-5">
         <h2 class="text-center">❓ Frequently Asked Questions</h2>
@@ -269,11 +324,15 @@
         </div>
     </div>
 
+
+
     <!-- 📞 Contact Section -->
     <div class="container text-center my-5">
         <h2>📞 Contact Us</h2>
         <p>Email: contact@g2medical.com | Phone: 400-123-4567</p>
     </div>
+
+
 </body>
 
 </html>
