@@ -45,6 +45,6 @@ This login page incorporates various **Bootstrap 5** components to enhance its l
 - `.text-center` - Centers text elements.
 - `.mt-3`, `.text-start` - Adds margins and text alignment.
 
-### **3.Future Enhancements**
+### **3. Future Enhancements**
 - Implement the functionality of all interaction modules (such as buttons and links)
 
