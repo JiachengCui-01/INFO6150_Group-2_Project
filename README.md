@@ -39,6 +39,42 @@ This login page incorporates various **Bootstrap 5** components to enhance its l
 - `.dropdown-toggle` - Used to toggle the dropdown.
 - `.dropdown-menu` - Container for dropdown options.
 
+  ### Carousel for Announcements
+- **`.carousel`**: Showcases the latest news and announcements in a dynamic slideshow format.
+- **`.carousel-inner`**: Contains individual items within the carousel.
+- **`.carousel-item`**: Represents each slide within the carousel.
+- **`.carousel-control-prev` & `.carousel-control-next`**: Navigation arrows for moving to the previous or next slide.
+
+### Cards for Doctor Profiles
+- **`.card`**: Displays information about doctors including photos, specialties, and contact options.
+- **`.card-img-top`**: Responsive image placement at the top of each card.
+- **`.card-body`**: Container for text content within each card.
+- **`.card-title` & `.card-text`**: For headings and additional information within cards.
+
+### Alerts for Important Notices
+- **`.alert`**: Provides significant alerts or warnings (e.g., medical advisories).
+- **`.alert-warning`**: Specific styling for warning messages.
+- **`.fade show`**: Transition effects for alert visibility.
+
+### Modal for Detailed Messages
+- **`.modal`**: Contains detailed messages from healthcare providers.
+- **`.modal-dialog`**: Wraps the modal content.
+- **`.modal-content`**: The content area which includes the header, body, and footer of the modal.
+- **`.modal-header`, `.modal-body`, and `.modal-footer`**: Structure the content within the modal.
+
+### Accordion for FAQs
+- **`.accordion`**: Used for collapsible items which expand to show more content.
+- **`.accordion-item`**: Each collapsible section within the accordion.
+- **`.accordion-header` & `.accordion-collapse`**: Controls for expanding and collapsing accordion content.
+
+### Progress Bar for Appointment Scheduling
+- **`.progress`**: Visual indicator of progress, such as appointment completion rates.
+- **`.progress-bar`**: The actual bar that represents the progress percentage.
+
+### Navigation and Layout
+- **`.navbar` and `.dropdown`**: For top-level navigation across different sections of the website.
+- **`.container`, `.row`, and `.col`**: For structured layout and alignment of content.
+
 ### **Grid System & Utilities**
 - `.container-fluid` - Full-width container for responsive design.
 - `.row`, `.col` - Bootstrap's flexible grid system.
