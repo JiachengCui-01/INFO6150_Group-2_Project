@@ -5,7 +5,8 @@
 ### **1. Purpose of the Website**
 The website is designed to provide a seamless connection between patients and medical professionals. It can enable patients to obtain more information about Medical Centers and receive assistance. Users can easily sign in or sign up with their email address and password in this page. Also, the navbar on the top can direct them to some useful information about the Medical Center.
 
-In the future, The Login page will serve as the entry point for users who wish to access various healthcare-related services on Home page. Such as:
+In the future, the Login Page will serve as the entry point for users who wish to access various healthcare-related services on Home Page. Such as:
+
 - Booking medical appointments
 - Accessing medical records
 - Consulting with doctors
