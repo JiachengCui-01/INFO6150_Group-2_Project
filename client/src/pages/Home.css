@@ -1,0 +1,116 @@
+body {
+    background-color: #f8f9fa;
+    padding-top: 70px;
+}
+.home-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://images.unsplash.com/photo-1576091160550-2173dba999ef');
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+    filter: grayscale(50%) brightness(50%);
+  }
+  
+  
+.navbar {
+    background-color: #343a40 !important;
+    padding: 15px 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand,
+.navbar-nav .nav-link {
+    color: #ffffff !important;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #17cb71 !important;
+}
+
+.navbar-nav .nav-link.active {
+    color: #17a2b8 !important;
+}
+
+.navbar.fixed-top {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.carousel img {
+    max-height: 400px;
+    object-fit: cover;
+}
+
+.carousel-wrapper {
+    max-width: 1400px;
+    margin: 0 auto; /* 居中 */
+  }
+  
+  
+/* 🌟 修改 Carousel 左右箭头颜色 */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    filter: invert(100%);
+    /* 让箭头变成白色 */
+    opacity: 0.8;
+    /* 让箭头更清晰 */
+}
+.carousel-caption h5,
+.carousel-caption p {
+  color: black !important;
+  font-weight: bold;
+  text-shadow: none; /* 如果之前有白色描边，取消掉 */
+}
+
+.btn-info {
+background-color: #17a2b8; /* Custom color */
+border-color: #17a2b8;
+}
+
+.btn-info:hover {
+background-color: #139ca3; /* Darker shade for hover */
+border-color: #117a80;
+}
+
+/* Card Styling */
+.card {
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+margin-top: 20px; /* Spacing between cards */
+margin-bottom: 20px}
+
+.card-img-top {
+height: 200px; /* Fixed height for consistent display */
+object-fit: cover; /* Cover fit to handle different aspect ratios */
+}
+
+.card-body {
+padding: 15px;
+}
+
+/* Alert Styling */
+.alert {
+margin-top: 20px; 
+margin-bottom: 20px; 
+}
+
+/* Modal Styling */
+.modal-content {
+border-radius: 8px; 
+}
+
+.modal-header {
+background-color: #f8f9fa; 
+border-bottom: 2px solid #dee2e6; 
+}
+
+.modal-title {
+color: #343a40; 
+}
