@@ -16,11 +16,11 @@ body {
   }
   
   
-.navbar {
-    background-color: #343a40 !important;
-    padding: 15px 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-}
+  .navbar {
+    background-color: transparent !important;
+    box-shadow: none !important;
+    transition: background-color 0.3s ease;
+  }
 
 .navbar-brand,
 .navbar-nav .nav-link {

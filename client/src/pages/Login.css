@@ -1,50 +1,48 @@
-body {
+.login-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background: url('https://images.unsplash.com/photo-1576091160550-2173dba999ef') no-repeat center center fixed;
   background-size: cover;
-  font-family: Arial, sans-serif;
+  z-index: -1;
+  backdrop-filter: grayscale(60%) brightness(60%);
 }
 
-.login-container {
-  max-width: 400px;
-  margin: 5% auto;
-  background-color: rgba(255, 255, 255, 0.85);
+.login-card {
+  width: 450px;
+  margin: 100px auto 30px auto;
   padding: 30px;
   border-radius: 15px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  color: #333;
 }
 
-.login-container .avatar {
+.avatar {
   width: 80px;
   height: 80px;
-  margin: 0 auto 20px auto;
-  display: block;
+  border-radius: 50%;
 }
 
-.login-container h2 {
-  text-align: center;
-  margin-bottom: 10px;
+.btn-custom {
+  background-color: #343a40;
+  color: #fff;
   font-weight: bold;
-}
-
-.login-container p {
-  text-align: center;
-  font-size: 14px;
-  color: #333;
-  margin-bottom: 20px;
-}
-
-.login-container .form-control {
-  margin-bottom: 15px;
-}
-
-.login-container button {
-  background-color: #444;
   border: none;
 }
 
-.login-container a {
-  display: block;
-  text-align: center;
-  font-size: 13px;
-  margin-top: 10px;
+.btn-custom:hover {
+  background-color: #000;
+  color: #fff;
+}
+
+.navbar {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.navbar-brand,
+.navbar-nav .nav-link {
+  color: white;
 }
