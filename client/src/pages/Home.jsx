@@ -1,7 +1,24 @@
 import React from 'react';
 import './Home.css';
+import { useNavigate } from 'react-router-dom';
+import defaultAvatar from '../assets/img_avatar.png';
 
 function Home() {
+  const navigate = useNavigate();
+
+  const userName = localStorage.getItem('userName') || 'User';
+  const userImage = localStorage.getItem('userImage');
+  const avatarUrl =
+  userImage && userImage !== 'null' && userImage !== 'undefined' && userImage.trim() !== ''
+    ? `http://localhost:5000/uploads/${userImage}`
+    : defaultAvatar;
+
+
+  const handleLogout = () => {
+    localStorage.clear();
+    navigate('/login');
+  };
+
   return (
     <>
       {/* Background Layer */}
@@ -38,8 +55,27 @@ function Home() {
                   <li><a className="dropdown-item" href="#">Department of Neurosurgery</a></li>
                 </ul>
               </li>
-              <li className="nav-item"><a className="nav-link btn btn-primary text-white" href="LoginPage.html">Logout</a></li>
+              <li className="nav-item">
+                <button className="nav-link btn btn-primary text-white" onClick={handleLogout}>
+                  Logout
+                </button>
+              </li>
             </ul>
+             {/* 👤 用户信息显示区 */}
+             <div className="d-flex align-items-center ms-auto">
+              <span className="me-2 text-white fw-bold">{userName}</span>
+              <img
+                src={avatarUrl}
+                alt="User Avatar"
+                style={{
+                  width: '35px',
+                  height: '35px',
+                  borderRadius: '50%',
+                  objectFit: 'cover',
+                  border: '2px solid white'
+                }}
+              />
+            </div>
           </div>
         </div>
       </nav>
