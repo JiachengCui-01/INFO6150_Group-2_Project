@@ -1,10 +1,10 @@
-// 修复注册失败 - /routes/auth.js
 const express = require('express');
 const bcrypt = require('bcrypt');
 const multer = require('multer');
 const path = require('path');
 const User = require('../models/User');
 const router = express.Router();
+const fs = require('fs');
 
 
 // multer 设置上传文件位置
@@ -99,6 +99,44 @@ router.post('/reset-password', async (req, res) => {
   } catch (err) {
     console.error(err);
     res.status(500).json({ message: 'Error updating password' });
+  }
+});
+
+// 更新头像
+router.post('/update-avatar', upload.single('image'), async (req, res) => {
+  try {
+    const { email } = req.body;
+    const user = await User.findOne({ email });
+
+    if (!user) {
+      return res.status(404).json({ message: 'User not found.' });
+    }
+
+    // 如果用户原本有头像且不是默认头像，尝试删除旧文件
+    if (user.image) {
+      const oldPath = path.join(__dirname, '../uploads', user.image);
+
+      // 检查文件存在且不是默认头像再删除
+      if (
+        fs.existsSync(oldPath) &&
+        user.image !== 'img_avatar.png'
+      ) {
+        try {
+          fs.unlinkSync(oldPath);
+        } catch (err) {
+          console.error('Failed to delete old avatar:', err);
+        }
+      }
+    }
+
+    // 更新用户头像字段
+    user.image = req.file.filename;
+    await user.save();
+
+    res.status(200).json({ message: 'Avatar updated successfully.', image: user.image });
+  } catch (err) {
+    console.error('Avatar update error:', err);
+    res.status(500).json({ message: 'Internal Server Error' });
   }
 });
 
