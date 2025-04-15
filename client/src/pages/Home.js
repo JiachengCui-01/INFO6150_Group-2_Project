@@ -64,11 +64,7 @@ function Home() {
              <div className="d-flex align-items-center ms-auto">
               <span className="me-2 text-white fw-bold">{userName}</span>
               <img
-                src={
-                  userImage
-                    ? `http://localhost:5000/uploads/${userImage}`
-                    : defaultAvatar
-                }
+                src={avatarUrl}
                 alt="User Avatar"
                 style={{
                   width: '35px',
