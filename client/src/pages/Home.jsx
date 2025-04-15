@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Home.css';
 import { useNavigate } from 'react-router-dom';
 import defaultAvatar from '../assets/img_avatar.png';
@@ -13,6 +13,10 @@ function Home() {
     ? `http://localhost:5000/uploads/${userImage}`
     : defaultAvatar;
 
+  const [showDropdown, setShowDropdown] = useState(false);
+  const toggleDropdown = () => {
+    setShowDropdown(prev => !prev);
+  };
 
   const handleLogout = () => {
     localStorage.clear();
@@ -55,27 +59,37 @@ function Home() {
                   <li><a className="dropdown-item" href="#">Department of Neurosurgery</a></li>
                 </ul>
               </li>
-              <li className="nav-item">
-                <button className="nav-link btn btn-primary text-white" onClick={handleLogout}>
-                  Logout
-                </button>
-              </li>
             </ul>
              {/* 👤 用户信息显示区 */}
              <div className="d-flex align-items-center ms-auto">
               <span className="me-2 text-white fw-bold">{userName}</span>
               <img
-                src={avatarUrl}
+                src={
+                  userImage
+                    ? `http://localhost:5000/uploads/${userImage}`
+                    : defaultAvatar
+                }
                 alt="User Avatar"
                 style={{
                   width: '35px',
                   height: '35px',
                   borderRadius: '50%',
                   objectFit: 'cover',
-                  border: '2px solid white'
+                  border: '2px solid white',
+                  cursor: 'pointer'
                 }}
+                onClick={toggleDropdown}
               />
             </div>
+            {showDropdown && (
+              <div
+                className="position-absolute text-white bg-dark rounded p-2 shadow"
+                style={{ top: '60px', right: '20px', zIndex: 1050 }}
+              >
+                <a href="/modify-avatar" className="btn btn-outline-light mb-2 w-100">Modify Avatar</a>
+                <button className="btn btn-outline-light w-100" onClick={handleLogout}>Logout</button>
+              </div>
+            )}
           </div>
         </div>
       </nav>
