@@ -21,6 +21,11 @@ function Login() {
         localStorage.setItem('userRole', data.user.type);
         localStorage.setItem('userImage', data.user.image);
         localStorage.setItem('userName', data.user.fullName);
+        if (data.user.image) {
+          localStorage.setItem('userImage', data.user.image);
+        } else {
+          localStorage.removeItem('userImage');
+        }
         navigate('/home');
       } else {
         alert(data.message || 'Login failed');
@@ -50,6 +55,21 @@ function Login() {
         </form>
         <div className="mt-3">
           <a href="/reset-password" className="text-decoration-none">Forgot password?</a>
+        </div>
+        <div className="mt-2">
+          <a
+            href="#"
+            className="text-decoration-none"
+            onClick={() => {
+              localStorage.setItem('userEmail', 'guest@example.com');
+              localStorage.setItem('userRole', 'guest');
+              localStorage.setItem('userName', 'Guest');
+              localStorage.setItem('userImage', 'img_avatar.png'); 
+              window.location.href = '/home';
+            }}
+          >
+            Browse as Guest
+          </a>
         </div>
         <hr />
         <p>Don't have an account?</p>

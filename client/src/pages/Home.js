@@ -8,6 +8,8 @@ function Home() {
 
   const userName = localStorage.getItem('userName') || 'User';
   const userImage = localStorage.getItem('userImage');
+  const userRole = localStorage.getItem('userRole') || 'guest';
+  const isGuest = userRole === 'guest';
   const avatarUrl =
   userImage && userImage !== 'null' && userImage !== 'undefined' && userImage.trim() !== ''
     ? `http://localhost:5000/uploads/${userImage}`
@@ -59,12 +61,31 @@ function Home() {
                   <li><a className="dropdown-item" href="#">Department of Neurosurgery</a></li>
                 </ul>
               </li>
+                {/* 👇 后续添加的，仅 admin 可见 */}
+                {userRole === "admin" && (
+                  <li className="nav-item">
+                    <a className="nav-link" href="/admin">Admin Panel</a>
+                  </li>
+                )}
+
+                {/* 👇 后续添加的，仅 employee 可见 */}
+                {userRole === "employee" && (
+                  <li className="nav-item">
+                    <a className="nav-link" href="/employee">Manage Applys</a>
+                  </li>
+                )}
+                {/* 👇 后续添加的，仅 client 可见 */}
+                {userRole === "client" && (
+                  <li className="nav-item">
+                    <a className="nav-link" href="/client">Apply</a>
+                  </li>
+                )}
             </ul>
              {/* 👤 用户信息显示区 */}
              <div className="d-flex align-items-center ms-auto">
-              <span className="me-2 text-white fw-bold">{userName}</span>
+             <span className="me-2 text-white fw-bold">{isGuest ? 'Guest' : userName}</span>
               <img
-                src={avatarUrl}
+                src={isGuest ? defaultAvatar : avatarUrl}
                 alt="User Avatar"
                 style={{
                   width: '35px',
@@ -77,13 +98,16 @@ function Home() {
                 onClick={toggleDropdown}
               />
             </div>
-            {showDropdown && (
-              <div
-                className="position-absolute text-white bg-dark rounded p-2 shadow"
-                style={{ top: '60px', right: '20px', zIndex: 1050 }}
-              >
-                <a href="/modify-avatar" className="btn btn-outline-light mb-2 w-100">Modify Avatar</a>
-                <button className="btn btn-outline-light w-100" onClick={handleLogout}>Logout</button>
+            {showDropdown &&  (
+              <div className="position-absolute text-white bg-dark rounded p-2 shadow" style={{ top: '60px', right: '20px', zIndex: 1050 }}>
+                {isGuest ? (
+                  <a href="/login" className="btn btn-outline-light w-100">Back to Login</a>
+                ) : (
+                  <>
+                    <a href="/modify-avatar" className="btn btn-outline-light mb-2 w-100">Modify Avatar</a>
+                    <button className="btn btn-outline-light w-100" onClick={handleLogout}>Logout</button>
+                  </>
+                )}
               </div>
             )}
           </div>
