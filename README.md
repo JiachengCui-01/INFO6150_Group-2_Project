@@ -158,6 +158,125 @@ server/
 - Password reset page validates and updates securely
 
 ---
+# Backend API Overview (Express.js)
+
+This project exposes a series of RESTful API endpoints under `/api/auth` to support authentication and avatar handling.
+
+---
+
+## Base URL
+```
+http://localhost:5000/api/auth
+```
+
+---
+
+## Endpoints
+
+### 1. `POST /register` – User Registration
+
+Registers a new user with optional avatar upload.
+
+**FormData Parameters:**
+
+| Field      | Type     | Required | Description                      |
+|------------|----------|----------|----------------------------------|
+| fullName   | String   | ✅       | User's full name                 |
+| email      | String   | ✅       | User's email                     |
+| password   | String   | ✅       | Password (min 6 characters)      |
+| type       | String   | ✅       | `admin` / `employee` / `client`  |
+| image      | File     | ❌       | Optional avatar image            |
+
+**Returns:**
+```json
+{ "message": "User registered successfully." }
+```
+
+---
+
+### 2. `POST /login` – User Login
+
+Authenticates user with email and password.
+
+**Body (JSON):**
+```json
+{
+  "email": "user@example.com",
+  "password": "123456"
+}
+```
+
+**Returns:**
+```json
+{
+  "user": {
+    "fullName": "John Doe",
+    "email": "user@example.com",
+    "type": "admin",
+    "image": "filename.png"
+  }
+}
+```
+
+---
+
+### 3. `GET /avatar/:email` – Get Avatar by Email
+
+Returns avatar file path if exists.
+
+**Example:**
+```
+GET /api/auth/avatar/user@example.com
+```
+
+**Returns:**
+```json
+{ "avatarUrl": "/uploads/filename.png" }
+```
+
+If not found:
+
+```json
+{ "avatarUrl": null }
+```
+
+---
+
+### 4. `POST /update-password` – Reset Password
+
+Used in "Forgot Password" flow to update password.
+
+**Body (JSON):**
+```json
+{
+  "email": "user@example.com",
+  "newPassword": "newpass123"
+}
+```
+
+**Returns:**
+```json
+{ "message": "Password updated successfully." }
+```
+
+---
+
+### 5. `POST /update-avatar` – Update Avatar
+
+Allows logged-in user to replace their avatar.
+
+**FormData Parameters:**
+
+| Field | Type | Required | Description            |
+|-------|------|----------|------------------------|
+| email | String | ✅     | Email of the user      |
+| image | File   | ✅     | New avatar image       |
+
+**Returns:**
+```json
+{ "message": "Avatar updated successfully.", "image": "filename.png" }
+```
+
 ---
 
 ## Login Page and Home Page
