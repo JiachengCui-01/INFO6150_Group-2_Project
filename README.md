@@ -1,5 +1,164 @@
 # Group 2 Project - G2 Medical Center
 
+# How to Run This Project
+
+This project is a full-stack web application with a React frontend and Node.js + Express backend.
+
+
+## Installation Steps
+
+### 1. Clone the project
+
+```bash
+git clone <your-repo-url>
+cd <project-root>
+```
+
+### 2. Install dependencies
+
+#### Backend (server)
+
+```bash
+cd server
+npm install
+```
+
+#### Frontend (client)
+
+```bash
+cd ../client
+npm install
+```
+
+### 3. Create `.env` file in `server/`
+
+In the `server` directory, create a `.env` file:
+
+```env
+PORT=5000
+MONGO_URL=mongodb://localhost:27017/g2medical
+```
+
+### 4. Create `uploads/` folder
+
+Required for image uploads:
+
+```bash
+server/uploads/
+```
+
+### 5. Start the servers
+
+#### Backend
+
+```bash
+cd server
+npm start
+```
+
+#### Frontend (in a separate terminal)
+
+```bash
+cd client
+npm start
+```
+
+## Features Implemented
+
+### User Authentication (Login & Register)
+- Login using email + password
+- Sign up with:
+  - Full name
+  - Email
+  - Password
+  - Role (Admin / Employee / Client)
+  - Avatar (optional, with preview)
+- Passwords securely hashed using `bcrypt`
+- Avatar images uploaded and stored using `multer`
+
+### Avatar Management
+- Avatar preview before sign-up
+- Avatar stored in `/uploads` folder
+- Default avatar shown if none is uploaded
+- Ability to modify avatar after registration
+- Avatar change updates across the system immediately
+
+### Role-based Access
+- Admin: sees admin-only options like Manage Jobs
+- Employee: sees jobs and company info
+- Client: basic access
+- Guest: can browse Home only, sees default navbar and guest info
+
+### Navbar Behavior
+- Displays logged-in user's name and avatar
+- Dropdown appears when avatar is clicked
+- For guest: shows `guest` + default avatar
+- For others: allows "Modify Avatar" and "Logout"
+
+### Guest Browsing Mode
+- No registration/login required
+- Sees only public Home content
+- Role-specific features hidden
+- Label and avatar shown as guest
+
+### Forgot Password (Reset)
+- Dedicated page to reset password via email + new password
+- No email verification needed
+- Password updated directly
+
+---
+
+## Tech Stack
+
+- **Frontend**: React, Bootstrap 5
+- **Backend**: Node.js, Express.js
+- **Database**: MongoDB (via Mongoose)
+- **File Upload**: `multer`
+- **Password Security**: `bcrypt`
+- **Routing**: React Router
+- **State**: LocalStorage-based role and image management
+
+---
+
+## Pages Included
+
+- `/login` – Login or switch to Sign Up
+- `/home` – Public Home (dynamic content)
+- `/register` – Full registration with avatar
+- `/modify-avatar` – Update avatar with live preview
+- `/forgot-password` – Reset password via email input
+
+---
+
+## Folder Structure Overview
+
+```
+client/
+  ├── assets/           # Avatar images
+  ├── components/       # Navbar, Footer
+  ├── pages/            # Home, Login, Register, etc.
+  └── App.js
+
+server/
+  ├── routes/           # auth.js (register/login)
+  ├── models/           # User.js
+  ├── uploads/          # Avatar images
+  └── index.js          # Express config
+```
+
+---
+
+## Tested Scenarios
+
+- Avatar preview works correctly
+- Default avatar shown when image not uploaded
+- Guest access works independently of user system
+- Navbar reflects role and identity properly
+- Avatar modification triggers refresh without reload
+- Password reset page validates and updates securely
+
+---
+---
 
 ## Login Page and Home Page
 ### **1. Purpose of the Website**
