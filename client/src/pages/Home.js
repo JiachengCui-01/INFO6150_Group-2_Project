@@ -41,15 +41,6 @@ function Home() {
               <li className="nav-item"><a className="nav-link" href="#">Home</a></li>
               <li className="nav-item"><a className="nav-link" href="#">Doctors</a></li>
               <li className="nav-item dropdown">
-                <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Services</a>
-                <ul className="dropdown-menu">
-                  <li><a className="dropdown-item" href="appointment.html">Booking an Appointment</a></li>
-                  <li><a className="dropdown-item" href="medical-records.html">Accessing Medical Records</a></li>
-                  <li><a className="dropdown-item" href="consult-doctor.html">Consulting with Doctors</a></li>
-                  <li><a className="dropdown-item" href="manage-patient.html">Managing Patient Information</a></li>
-                </ul>
-              </li>
-              <li className="nav-item dropdown">
                 <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Departments</a>
                 <ul className="dropdown-menu">
                   <li><a className="dropdown-item" href="#">Department of Internal Medicine</a></li>
@@ -76,8 +67,14 @@ function Home() {
                 )}
                 {/* 👇 后续添加的，仅 client 可见 */}
                 {userRole === "client" && (
-                  <li className="nav-item">
-                    <a className="nav-link" href="/client">Apply</a>
+                  <li className="nav-item dropdown">
+                    <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Services</a>
+                    <ul className="dropdown-menu">
+                      <li><a className="dropdown-item" href="appointment.html">Booking an Appointment</a></li>
+                      <li><a className="dropdown-item" href="medical-records.html">Accessing Medical Records</a></li>
+                      <li><a className="dropdown-item" href="consult-doctor.html">Consulting with Doctors</a></li>
+                      <li><a className="dropdown-item" href="manage-patient.html">Managing Patient Information</a></li>
+                    </ul>
                   </li>
                 )}
             </ul>
@@ -270,15 +267,15 @@ function Home() {
       </div>
 
       {/* Lab Results */}
-      <div class="card mt-3a mb-5" id="lab_results">
-        <div class="card-body">
-          <h5 class="card-title">Lipid Profile</h5>
-          <p class="card-text"><strong>Total Cholesterol:</strong> 200 mg/dL <span class="text-muted">(Desirable:  &lt; 200 mg/dL)</span></p>
-          <p class="card-text"><strong>HDL (High-Density Lipoprotein):</strong> 50 mg/dL <span class="text-muted">(Good: 40 - 60 mg/dL)</span></p>
-          <p class="card-text"><strong>LDL (Low-Density Lipoprotein):</strong> 120 mg/dL <span class="text-muted">(Optimal:  &lt; 100 mg/dL)</span></p>
-          <p class="card-text"><strong>Triglycerides:</strong> 150 mg/dL <span class="text-muted">(Normal:  &lt; 150 mg/dL)</span></p>
-          <p class="card-text"><strong>VLDL (Very Low-Density Lipoprotein):</strong> 30 mg/dL <span class="text-muted">(Normal: 5-40 mg/dL)</span></p>
-          <p class="card-text"><strong>Non-HDL Cholesterol:</strong> 150 mg/dL <span class="text-muted">(Optimal:  &lt; 130 mg/dL)</span></p>
+      <div className="card mt-3a mb-5" id="lab_results">
+        <div className="card-body">
+          <h5 className="card-title">Lipid Profile</h5>
+          <p className="card-text"><strong>Total Cholesterol:</strong> 200 mg/dL <span className="text-muted">(Desirable:  &lt; 200 mg/dL)</span></p>
+          <p className="card-text"><strong>HDL (High-Density Lipoprotein):</strong> 50 mg/dL <span className="text-muted">(Good: 40 - 60 mg/dL)</span></p>
+          <p className="card-text"><strong>LDL (Low-Density Lipoprotein):</strong> 120 mg/dL <span className="text-muted">(Optimal:  &lt; 100 mg/dL)</span></p>
+          <p className="card-text"><strong>Triglycerides:</strong> 150 mg/dL <span className="text-muted">(Normal:  &lt; 150 mg/dL)</span></p>
+          <p className="card-text"><strong>VLDL (Very Low-Density Lipoprotein):</strong> 30 mg/dL <span className="text-muted">(Normal: 5-40 mg/dL)</span></p>
+          <p className="card-text"><strong>Non-HDL Cholesterol:</strong> 150 mg/dL <span className="text-muted">(Optimal:  &lt; 130 mg/dL)</span></p>
         </div>
       </div>
 
@@ -298,15 +295,15 @@ function Home() {
               </div>
             </div>
           </div>
-          <div class="accordion-item">
-                <h2 class="accordion-header">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+          <div className="accordion-item">
+                <h2 className="accordion-header">
+                    <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                         data-bs-target="#faq2">
                         What are the hospital's visiting hours?
                     </button>
                 </h2>
-                <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                    <div class="accordion-body">
+                <div id="faq2" className="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div className="accordion-body">
                         Visiting hours are from 9 AM to 7 PM, Monday to Saturday.
                     </div>
                 </div>
