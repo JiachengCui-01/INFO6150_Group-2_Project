@@ -137,6 +137,31 @@ router.put('/status/:id', async (req, res) => {
     console.error('Error updating appointment status:', err);
     res.status(500).json({ message: 'Server error', error: err.message });
   }
+
+  // Get appointments for a doctor
+router.get('/doctor', async (req, res) => {
+  try {
+    const { email } = req.query;
+
+    const doctor = await User.findOne({ email, type: 'doctor' }); // 你们叫 doctor 是 'doctor' 还是 'employee' 要统一！
+    if (!doctor) return res.status(404).json({ message: 'Doctor not found' });
+
+    const appointments = await Appointment.find({ doctorId: doctor._id }).populate('clientId', 'fullName');
+
+    const result = appointments.map(appt => ({
+      _id: appt._id,
+      date: appt.date,
+      reason: appt.reason,
+      status: appt.status,
+      patientName: appt.clientId?.fullName || 'N/A'
+    }));
+
+    res.json(result);
+  } catch (err) {
+    console.error('Doctor appointment fetch error:', err);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
 });
 
 module.exports = router;

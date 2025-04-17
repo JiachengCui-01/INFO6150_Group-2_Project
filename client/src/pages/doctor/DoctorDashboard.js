@@ -21,7 +21,7 @@ const DoctorDashboard = () => {
             <Card.Body>
               <Card.Title>📅 Today's Appointments</Card.Title>
               <Card.Text className="text-muted">
-                You have <strong>6</strong> appointments scheduled today.
+                Start managing appointments.
               </Card.Text>
               <Button variant="primary" className="w-100" onClick={() => navigate('/doctor/appointments')}>
                 View Appointments

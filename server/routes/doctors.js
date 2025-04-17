@@ -33,6 +33,29 @@ router.get('/profile', async (req, res) => {
   }
 });
 
+
+// 获取所有预约（不区分医生）
+router.get('/doctor', async (req, res) => {
+  try {
+    const appointments = await Appointment.find()
+      .populate('clientId', 'fullName')
+      .populate('doctorId', 'fullName');
+
+    const result = appointments.map(appt => ({
+      _id: appt._id,
+      date: appt.date,
+      reason: appt.reason,
+      status: appt.status,
+      patientName: appt.clientId?.fullName || 'N/A',
+      doctorName: appt.doctorId?.fullName || 'N/A'
+    }));
+
+    res.json(result);
+  } catch (err) {
+    console.error('Fetch all appointments failed:', err);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
 // 更新医生个人资料
 router.post('/profile', async (req, res) => {
   try {

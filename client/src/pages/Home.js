@@ -1,19 +1,26 @@
 import React, { useState } from 'react';
 import './Home.css';
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import defaultAvatar from '../assets/img_avatar.png';
+import { useRef } from 'react';
 
 function Home() {
   const navigate = useNavigate();
+  const doctorSectionRef = useRef(null);
+
+  const scrollToDoctors = () => {
+    doctorSectionRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
 
   const userName = localStorage.getItem('userName') || 'User';
   const userImage = localStorage.getItem('userImage');
   const userRole = localStorage.getItem('userRole') || 'guest';
   const isGuest = userRole === 'guest';
   const avatarUrl =
-  userImage && userImage !== 'null' && userImage !== 'undefined' && userImage.trim() !== ''
-    ? `http://localhost:5000/uploads/${userImage}`
-    : defaultAvatar;
+    userImage && userImage !== 'null' && userImage !== 'undefined' && userImage.trim() !== ''
+      ? `http://localhost:5000/uploads/${userImage}`
+      : defaultAvatar;
 
   const [showDropdown, setShowDropdown] = useState(false);
   const toggleDropdown = () => {
@@ -39,48 +46,51 @@ function Home() {
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
               <li className="nav-item"><a className="nav-link" href="#">Home</a></li>
-              <li className="nav-item"><a className="nav-link" href="#">Doctors</a></li>
-              <li className="nav-item dropdown">
+              <li className="nav-item">
+                <button className="nav-link btn btn-link text-white text-decoration-none" onClick={scrollToDoctors}>
+                  Doctors
+                </button>
+              </li>              <li className="nav-item dropdown">
                 <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Departments</a>
                 <ul className="dropdown-menu">
-                  <li><a className="dropdown-item" href="#">Department of Internal Medicine</a></li>
-                  <li><a className="dropdown-item" href="#">Department of Surgery</a></li>
-                  <li><a className="dropdown-item" href="#">Department of Pediatrics</a></li>
-                  <li><a className="dropdown-item" href="#">Department of Ophthalmology</a></li>
-                  <li><a className="dropdown-item" href="#">Department of Stomatology</a></li>
-                  <li><a className="dropdown-item" href="#">Department of Dermatology</a></li>
-                  <li><a className="dropdown-item" href="#">Department of Neurosurgery</a></li>
+                  <li><Link className="dropdown-item" to="/departments/internal-medicine">Department of Internal Medicine</Link></li>
+                  <li><Link className="dropdown-item" to="/departments/surgery">Department of Surgery</Link></li>
+                  <li><Link className="dropdown-item" to="/departments/pediatrics">Department of Pediatrics</Link></li>
+                  <li><Link className="dropdown-item" to="/departments/ophthalmology">Department of Ophthalmology</Link></li>
+                  <li><Link className="dropdown-item" to="/departments/stomatology">Department of Stomatology</Link></li>
+                  <li><Link className="dropdown-item" to="/departments/dermatology">Department of Dermatology</Link></li>
+                  <li><Link className="dropdown-item" to="/departments/neurosurgery">Department of Neurosurgery</Link></li>
                 </ul>
               </li>
-                {/* 后续添加的，仅 admin 可见 */}
-                {userRole === "admin" && (
-                  <li className="nav-item">
-                    <a className="nav-link" href="/admin">Admin Panel</a>
-                  </li>
-                )}
+              {/* 后续添加的，仅 admin 可见 */}
+              {userRole === "admin" && (
+                <li className="nav-item">
+                  <a className="nav-link" href="/admin">Admin Panel</a>
+                </li>
+              )}
 
-                {/* 后续添加的，仅 employee 可见 */}
-                {userRole === "employee" && (
-                  <li className="nav-item">
-                    <a className="nav-link" href="/employee">Manage Applys</a>
-                  </li>
-                )}
-                {/* 后续添加的，仅 client 可见 */}
-                {userRole === "client" && (
-                  <li className="nav-item dropdown">
-                    <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Services</a>
-                    <ul className="dropdown-menu">
-                      <li><a className="dropdown-item" href="/patient/appointments">Book an Appointment</a></li>
-                      <li><a className="dropdown-item" href="/patient/profile">My Medical Profile</a></li>
-                      <li><a className="dropdown-item" href="/patient/medical-records">Medical Records</a></li>
-                      <li><a className="dropdown-item" href="/patient/consultation">Consult Doctor</a></li>
-                    </ul>
-                  </li>
-                )}
+              {/* 后续添加的，仅 employee 可见 */}
+              {userRole === "employee" && (
+                <li className="nav-item">
+                  <a className="nav-link" href="/employee">Manage Applys</a>
+                </li>
+              )}
+              {/* 后续添加的，仅 client 可见 */}
+              {userRole === "client" && (
+                <li className="nav-item dropdown">
+                  <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Services</a>
+                  <ul className="dropdown-menu">
+                    <li><a className="dropdown-item" href="/patient/appointments">Book an Appointment</a></li>
+                    <li><a className="dropdown-item" href="/patient/profile">My Medical Profile</a></li>
+                    <li><a className="dropdown-item" href="/patient/medical-records">Medical Records</a></li>
+                    <li><a className="dropdown-item" href="/patient/consultation">Consult Doctor</a></li>
+                  </ul>
+                </li>
+              )}
             </ul>
-             {/* 👤 用户信息显示区 */}
-             <div className="d-flex align-items-center ms-auto">
-             <span className="me-2 text-white fw-bold">{isGuest ? 'Guest' : userName}</span>
+            {/* 👤 用户信息显示区 */}
+            <div className="d-flex align-items-center ms-auto">
+              <span className="me-2 text-white fw-bold">{isGuest ? 'Guest' : userName}</span>
               <img
                 src={isGuest ? defaultAvatar : avatarUrl}
                 alt="User Avatar"
@@ -95,7 +105,7 @@ function Home() {
                 onClick={toggleDropdown}
               />
             </div>
-            {showDropdown &&  (
+            {showDropdown && (
               <div className="position-absolute text-white bg-dark rounded p-2 shadow" style={{ top: '60px', right: '20px', zIndex: 1050 }}>
                 {isGuest ? (
                   <a href="/login" className="btn btn-outline-light w-100">Back to Login</a>
@@ -178,7 +188,7 @@ function Home() {
       </div>
 
       {/* Doctors Section */}
-      <div className="container mt-5">
+      <div ref={doctorSectionRef} className="container mt-5">
         <h2 className="text-center mb-4 text-white">Meet Our Doctors</h2>
         <div className="row">
           {[
@@ -296,18 +306,18 @@ function Home() {
             </div>
           </div>
           <div className="accordion-item">
-                <h2 className="accordion-header">
-                    <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#faq2">
-                        What are the hospital's visiting hours?
-                    </button>
-                </h2>
-                <div id="faq2" className="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                    <div className="accordion-body">
-                        Visiting hours are from 9 AM to 7 PM, Monday to Saturday.
-                    </div>
-                </div>
+            <h2 className="accordion-header">
+              <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#faq2">
+                What are the hospital's visiting hours?
+              </button>
+            </h2>
+            <div id="faq2" className="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div className="accordion-body">
+                Visiting hours are from 9 AM to 7 PM, Monday to Saturday.
+              </div>
             </div>
+          </div>
         </div>
       </div>
 
