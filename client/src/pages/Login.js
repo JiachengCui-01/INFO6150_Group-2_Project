@@ -31,9 +31,11 @@ function Login() {
         // ✅ Redirect based on role
         if (data.user.type === 'doctor') {
           navigate('/doctor/dashboard');
-        } else if (data.user.type === 'patient') {
+        } else if (data.user.type === 'client') {
           navigate('/home'); // this matches your Home.js
-        } else {
+        }  else if (data.user.type === 'guest') {
+          navigate('/home'); // this matches your Home.js
+        }else {
           navigate('/'); // fallback for unknown roles
         }
       } else {

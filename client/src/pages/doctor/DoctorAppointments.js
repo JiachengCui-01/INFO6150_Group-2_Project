@@ -9,7 +9,7 @@ const DoctorAppointments = () => {
   useEffect(() => {
     const fetchAppointments = async () => {
       try {
-        const res = await fetch(`/api/appointments/doctor?email=${doctorEmail}`);
+        const res = await fetch(`/api/appointments/doctor`);
         const data = await res.json();
         if (res.ok) {
           setAppointments(data);
@@ -33,16 +33,16 @@ const DoctorAppointments = () => {
         {loading ? (
           <div className="text-center">
             <Spinner animation="border" />
-            <p>Loading appointments...</p>
+            <p>Loading appointments...</p >
           </div>
         ) : appointments.length === 0 ? (
-          <p>No appointments found.</p>
+          <p>No appointments found.</p >
         ) : (
           <Table striped bordered hover>
             <thead>
               <tr>
                 <th>Date</th>
-                <th>Patient</th>
+                <th>Client</th> {/* ✅ Changed from 'Patient' to 'Client' */}
                 <th>Reason</th>
                 <th>Status</th>
               </tr>
@@ -51,7 +51,7 @@ const DoctorAppointments = () => {
               {appointments.map((appt) => (
                 <tr key={appt._id}>
                   <td>{new Date(appt.date).toLocaleString()}</td>
-                  <td>{appt.patientName || 'N/A'}</td>
+                  <td>{appt.patientName || 'N/A'}</td> {/* name key can stay as patientName */}
                   <td>{appt.reason}</td>
                   <td>{appt.status}</td>
                 </tr>
