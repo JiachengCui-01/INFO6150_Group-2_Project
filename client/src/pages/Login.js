@@ -17,16 +17,25 @@ function Login() {
       });
       const data = await response.json();
       if (response.ok) {
+        // Save user info to localStorage
         localStorage.setItem('userEmail', data.user.email);
         localStorage.setItem('userRole', data.user.type);
-        localStorage.setItem('userImage', data.user.image);
         localStorage.setItem('userName', data.user.fullName);
+      
         if (data.user.image) {
           localStorage.setItem('userImage', data.user.image);
         } else {
           localStorage.removeItem('userImage');
         }
-        navigate('/home');
+      
+        // ✅ Redirect based on role
+        if (data.user.type === 'doctor') {
+          navigate('/doctor/dashboard');
+        } else if (data.user.type === 'patient') {
+          navigate('/home'); // this matches your Home.js
+        } else {
+          navigate('/'); // fallback for unknown roles
+        }
       } else {
         alert(data.message || 'Login failed');
       }
