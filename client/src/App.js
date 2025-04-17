@@ -14,6 +14,7 @@ import Consultation from './pages/Consultation';
 import DoctorDashboard from './pages/doctor/DoctorDashboard';
 import PatientLookup from './pages/doctor/PatientLookup';
 import ConsultationNotes from './pages/doctor/ConsultationNotes';
+import DoctorAppointments from './pages/doctor/DoctorAppointments';
 
 
 
@@ -37,6 +38,7 @@ function App() {
         <Route path="/doctor/dashboard" element={<DoctorDashboard />} />
         <Route path="/doctor/patients" element={<PatientLookup />} />
         <Route path="/doctor/notes" element={<ConsultationNotes />} />
+        <Route path="/doctor/appointments" element={<DoctorAppointments />} />
 
       </Routes>
     </Router>
