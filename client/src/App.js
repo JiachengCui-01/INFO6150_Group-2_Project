@@ -16,7 +16,14 @@ import PatientLookup from './pages/doctor/PatientLookup';
 import ConsultationNotes from './pages/doctor/ConsultationNotes';
 import DoctorAppointments from './pages/doctor/DoctorAppointments';
 
-
+import InternalMedicine from './pages/departments/InternalMedicine';
+import Surgery from './pages/departments/Surgery';
+import Pediatrics from './pages/departments/Pediatrics';
+import Ophthalmology from './pages/departments/Ophthalmology';
+import Stomatology from './pages/departments/Stomatology';
+import Dermatology from './pages/departments/Dermatology';
+import Neurosurgery from './pages/departments/Neurosurgery';  
+import AdminDashboard from './pages/AdminDashboard';
 
 function App() {
   return (
@@ -39,6 +46,15 @@ function App() {
         <Route path="/doctor/patients" element={<PatientLookup />} />
         <Route path="/doctor/notes" element={<ConsultationNotes />} />
         <Route path="/doctor/appointments" element={<DoctorAppointments />} />
+        <Route path="/departments/internal-medicine" element={<InternalMedicine />} />
+        <Route path="/departments/surgery" element={<Surgery />} />
+        <Route path="/departments/pediatrics" element={<Pediatrics />} />
+        <Route path="/departments/ophthalmology" element={<Ophthalmology />} />
+        <Route path="/departments/stomatology" element={<Stomatology />} />
+        <Route path="/departments/dermatology" element={<Dermatology />} />
+        <Route path="/departments/neurosurgery" element={<Neurosurgery />} />
+
+        <Route path="/admin/dashboard" element={<AdminDashboard />} />
 
       </Routes>
     </Router>
