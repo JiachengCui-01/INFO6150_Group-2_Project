@@ -96,4 +96,34 @@ router.post('/profile', async (req, res) => {
   }
 });
 
+// 保存患者的会诊笔记
+router.post('/notes', async (req, res) => {
+  try {
+    const { email, consultationNotes } = req.body;
+
+    // 查找用户
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    // 查找患者档案
+    const patient = await Patient.findOne({ userId: user._id });
+    if (!patient) {
+      return res.status(404).json({ message: 'Patient not found' });
+    }
+
+    // 更新会诊笔记
+    patient.consultationNotes = consultationNotes;
+    await patient.save();
+
+    res.status(200).json({ message: 'Consultation notes updated successfully' });
+  } catch (err) {
+    console.error('Error saving consultation notes:', err);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+
+
+
 module.exports = router;

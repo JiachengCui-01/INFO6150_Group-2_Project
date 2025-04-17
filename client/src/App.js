@@ -10,6 +10,11 @@ import PatientProfile from './pages/PatientProfile';
 import Appointments from './pages/Appointments';
 import MedicalRecords from './pages/MedicalRecords';
 import Consultation from './pages/Consultation';
+//医生页面
+import DoctorDashboard from './pages/doctor/DoctorDashboard';
+import PatientLookup from './pages/doctor/PatientLookup';
+import ConsultationNotes from './pages/doctor/ConsultationNotes';
+
 
 
 function App() {
@@ -28,6 +33,11 @@ function App() {
         <Route path="/patient/appointments" element={<Appointments />} />
         <Route path="/patient/medical-records" element={<MedicalRecords />} />
         <Route path="/patient/consultation" element={<Consultation />} />
+        {/* 医生相关 */}
+        <Route path="/doctor/dashboard" element={<DoctorDashboard />} />
+        <Route path="/doctor/patients" element={<PatientLookup />} />
+        <Route path="/doctor/notes" element={<ConsultationNotes />} />
+
       </Routes>
     </Router>
   );

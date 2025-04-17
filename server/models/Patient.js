@@ -29,7 +29,13 @@ const patientSchema = new mongoose.Schema({
     name: String,
     relationship: String,
     phone: String
+  }, 
+  consultationNotes: {
+    type: String,
+    default: ''
   }
+  
+  
 }, { timestamps: true });
 
 module.exports = mongoose.model('Patient', patientSchema);
