@@ -11,19 +11,18 @@ import Appointments from './pages/Appointments';
 import MedicalRecords from './pages/MedicalRecords';
 import Consultation from './pages/Consultation';
 
+
 function App() {
   return (
     <Router>
       <Routes>
         {/* 默认访问根路径 / 时跳转到 /Login */}
         <Route path="/" element={<Navigate to="/Login" replace />} />
-
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="/home" element={<Home />} />
         <Route path="/modify-avatar" element={<ModifyAvatar />} />
-        
         {/* 患者相关路由 */}
         <Route path="/patient/profile" element={<PatientProfile />} />
         <Route path="/patient/appointments" element={<Appointments />} />
