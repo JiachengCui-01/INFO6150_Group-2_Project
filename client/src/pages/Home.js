@@ -70,10 +70,10 @@ function Home() {
                   <li className="nav-item dropdown">
                     <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Services</a>
                     <ul className="dropdown-menu">
-                      <li><a className="dropdown-item" href="appointment.html">Booking an Appointment</a></li>
-                      <li><a className="dropdown-item" href="medical-records.html">Accessing Medical Records</a></li>
-                      <li><a className="dropdown-item" href="consult-doctor.html">Consulting with Doctors</a></li>
-                      <li><a className="dropdown-item" href="manage-patient.html">Managing Patient Information</a></li>
+                      <li><a className="dropdown-item" href="/patient/appointments">Book an Appointment</a></li>
+                      <li><a className="dropdown-item" href="/patient/profile">My Medical Profile</a></li>
+                      <li><a className="dropdown-item" href="/patient/medical-records">Medical Records</a></li>
+                      <li><a className="dropdown-item" href="/patient/consultation">Consult Doctor</a></li>
                     </ul>
                   </li>
                 )}
@@ -291,7 +291,7 @@ function Home() {
             </h2>
             <div id="faq1" className="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
               <div className="accordion-body">
-                You can book an appointment online through our <a href="appointment.html">Appointment Page</a>.
+                You can book an appointment online through our <a href="/patient/appointments">Appointment Page</a>.
               </div>
             </div>
           </div>

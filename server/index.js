@@ -3,8 +3,10 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
-const authRoutes = require('./routes/auth');
 const path = require('path');
+const authRoutes = require('./routes/auth');
+const patientRoutes = require('./routes/patients');
+const appointmentRoutes = require('./routes/appointments');
 
 dotenv.config();
 
@@ -18,6 +20,8 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // Routes
 app.use('/api/auth', authRoutes);
+app.use('/api/patients', patientRoutes);
+app.use('/api/appointments', appointmentRoutes);
 
 // DB Connection
 mongoose.connect(process.env.MONGO_URI, {
