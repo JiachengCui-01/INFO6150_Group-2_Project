@@ -72,7 +72,7 @@ function Register() {
             <select className="form-select" value={type} onChange={(e) => setType(e.target.value)} required>
               <option value="" disabled>-- Please select --</option>
               <option value="admin">Admin</option>
-              <option value="employee">Employee</option>
+              <option value="doctor">Employee</option>
               <option value="client">Client</option>
             </select>
           </div>

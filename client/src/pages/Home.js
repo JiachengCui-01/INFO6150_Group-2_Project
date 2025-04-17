@@ -52,20 +52,20 @@ function Home() {
                   <li><a className="dropdown-item" href="#">Department of Neurosurgery</a></li>
                 </ul>
               </li>
-                {/* 👇 后续添加的，仅 admin 可见 */}
+                {/* 后续添加的，仅 admin 可见 */}
                 {userRole === "admin" && (
                   <li className="nav-item">
                     <a className="nav-link" href="/admin">Admin Panel</a>
                   </li>
                 )}
 
-                {/* 👇 后续添加的，仅 employee 可见 */}
+                {/* 后续添加的，仅 employee 可见 */}
                 {userRole === "employee" && (
                   <li className="nav-item">
                     <a className="nav-link" href="/employee">Manage Applys</a>
                   </li>
                 )}
-                {/* 👇 后续添加的，仅 client 可见 */}
+                {/* 后续添加的，仅 client 可见 */}
                 {userRole === "client" && (
                   <li className="nav-item dropdown">
                     <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Services</a>

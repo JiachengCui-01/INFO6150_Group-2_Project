@@ -1,18 +1,9 @@
 const mongoose = require('mongoose');
 
-const appointmentSchema = new mongoose.Schema({
+const AppointmentSchema = new mongoose.Schema({
   patientId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
-    required: true
-  },
-  doctorId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',
-    required: true
-  },
-  department: {
-    type: String,
     required: true
   },
   date: {
@@ -29,13 +20,29 @@ const appointmentSchema = new mongoose.Schema({
   },
   status: {
     type: String,
-    enum: ['pending', 'confirmed', 'completed', 'cancelled'],
+    enum: ['pending', 'confirmed', 'cancelled', 'completed'],
     default: 'pending'
   },
-  notes: {
-    type: String,
-    default: ''
+  createdAt: {
+    type: Date,
+    default: Date.now
   }
-}, { timestamps: true });
+}, {
+  toJSON: { virtuals: true },
+  toObject: { virtuals: true }
+});
 
-module.exports = mongoose.model('Appointment', appointmentSchema);
+AppointmentSchema.virtual('formattedDate').get(function() {
+  return this.date ? this.date.toLocaleDateString() : '';
+});
+
+AppointmentSchema.pre('save', function(next) {
+  if (this.date < new Date()) {
+    return next(new Error('Appointment date cannot be in the past'));
+  }
+  next();
+});
+
+const Appointment = mongoose.model('Appointment', AppointmentSchema);
+
+module.exports = Appointment;
